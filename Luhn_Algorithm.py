@@ -5,9 +5,8 @@ Note: for this algorith since the input is an int it cannot account for leading 
     the card number does not have to be 16 digits long for this algorith to work"""
 
 def Luhn(cardNum: int) -> bool:
+    # store each number in the list
     cardNum = list(map(int, str(cardNum)))
-    # check if input is 16 long
-    #if len(cardNum) == 16:
     # store/remove last number
     check_num = cardNum[-1]
     remaining_nums = cardNum[0:-1]
@@ -17,15 +16,12 @@ def Luhn(cardNum: int) -> bool:
     for i in range(len(double_even_index)):
         if i%2==1:
             double_even_index[i] = double_even_index[i]*2
-        else:
-            pass
 
     # sum digits of ^ and other numbers remaining
     for i in range(len(double_even_index)):
         if double_even_index[i] >= 10:
             double_even_index[i] = 1 + (double_even_index[i] - 10)
-        else:
-            pass
+
     sum_of_nums = sum(double_even_index)
     
     # take sum and get remainder when/10
